@@ -46,6 +46,7 @@ public class FilmManagerTest {
         String[] actual = manager.findLast();
         Assertions.assertArrayEquals(expected, actual);
     }
+
     @Test
     public void shouldFindLessFilms() {
         FilmManager manager = new FilmManager(4);
@@ -54,11 +55,11 @@ public class FilmManagerTest {
         manager.add("Отель Белград");
         manager.add("Джентльмены");
 
-
-        String[] expected = { "Джентльмены", "Отель Белград", "Вперед", "Бладшот"};
+        String[] expected = {"Джентльмены", "Отель Белград", "Вперед", "Бладшот"};
         String[] actual = manager.findLast();
         Assertions.assertArrayEquals(expected, actual);
     }
+
     @Test
     public void shouldFindLessFilmsInLength() {
         FilmManager manager = new FilmManager(5);
@@ -67,12 +68,50 @@ public class FilmManagerTest {
         manager.add("Отель Белград");
         manager.add("Джентльмены");
 
-
-        String[] expected = { "Джентльмены", "Отель Белград", "Вперед", "Бладшот"};
+        String[] expected = {"Джентльмены", "Отель Белград", "Вперед", "Бладшот"};
         String[] actual = manager.findLast();
         Assertions.assertArrayEquals(expected, actual);
     }
 
+    @Test
+    public void shouldFindLessFilmsButLimitMore() {
+        FilmManager manager = new FilmManager(15);
+        manager.add("Бладшот");
+        manager.add("Вперед");
+        manager.add("Отель Белград");
+        manager.add("Джентльмены");
+
+
+        String[] expected = {"Джентльмены", "Отель Белград", "Вперед", "Бладшот"};
+        String[] actual = manager.findLast();
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldFindAboveMaxLimit() {
+        FilmManager manager = new FilmManager(3);
+        manager.add("Бладшот");
+        manager.add("Вперед");
+        manager.add("Отель Белград");
+        manager.add("Джентльмены");
+
+        String[] expected = {"Джентльмены", "Отель Белград", "Вперед"};
+        String[] actual = manager.findLast();
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldFindLessThanLimit() {
+        FilmManager manager = new FilmManager(10);
+        manager.add("Бладшот");
+        manager.add("Вперед");
+        manager.add("Отель Белград");
+        manager.add("Джентльмены");
+
+        String[] expected = {"Джентльмены", "Отель Белград", "Вперед", "Бладшот"};
+        String[] actual = manager.findLast();
+        Assertions.assertArrayEquals(expected, actual);
+    }
 
 
 }

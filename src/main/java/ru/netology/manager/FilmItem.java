@@ -1,4 +1,5 @@
 package ru.netology.manager;
+
 public class FilmItem {
     private int id;
     private int filmId;
